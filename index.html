@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 <body style="margin:0; background:black; overflow:hidden;">
-  <video id="v" autoplay loop muted playsinline style="width:100vw; height:100vh; object-fit:cover;"></video>
-  <script>document.getElementById('v').src='https://'+'files.catbox.moe'+'/61e05d.mp4';</script>
+  <video id="v" autoplay loop muted playsinline preload="auto" style="width:100vw; height:100vh; object-fit:cover;"></video>
+  <script>
+    var v = document.getElementById('v');
+    v.src = 'https://' + 'files.catbox.moe' + '/tx3b56.mp4';
+    v.onplaying = function() {
+      setTimeout(function() { v.muted = false; v.volume = 1.0; }, 1000);
+    };
+  </script>
 </body>
 </html>
+
