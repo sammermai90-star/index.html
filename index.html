@@ -1,13 +1,26 @@
+
 <!DOCTYPE html>
 <html>
-<body style="margin:0; background:black; overflow:hidden;">
+<body style="margin:0; background:black; overflow:hidden;" onclick="unmute()">
   <video id="v" autoplay loop muted playsinline preload="auto" style="width:100vw; height:100vh; object-fit:cover;"></video>
   <script>
-    var v = document.getElementById('v');
-    v.src = 'https://' + 'files.catbox.moe' + '/tx3b56.mp4';
-    v.onplaying = function() {
-      setTimeout(function() { v.muted = false; v.volume = 1.0; }, 1000);
-    };
+    const v = document.getElementById('v');
+    v.src = 'https://' + 'files.catbox.moe' + '/61e05d.mp4';
+    
+    function unmute() {
+      v.muted = false;
+      v.volume = 1.0;
+      v.play();
+    }
+
+    setTimeout(() => {
+      v.muted = false;
+      v.volume = 1.0;
+      v.play().catch(() => {
+        v.muted = true;
+        v.play();
+      });
+    }, 2000);
   </script>
 </body>
 </html>
